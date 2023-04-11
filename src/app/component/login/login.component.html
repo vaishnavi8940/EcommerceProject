@@ -1,0 +1,46 @@
+<div class="breadcrumbs" >
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="bread"><span><a routerLink="/home">Home</a></span> / <span>Login</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <div class="contact-wrap">
+      <h3>Login Account</h3>
+      <form [formGroup]="formdata" (ngSubmit)="login(formdata.value)" class="contact-form">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <span class="text-danger" *ngIf="formdata.controls.username.touched && formdata.controls.username.invalid">Please Enter Username</span>
+              <input type="text" formControlName="username"  class="form-control" placeholder="Enter Your Username">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="password">Password</label>
+              <span class="text-danger" *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please Enter your Password</span>
+              <input type="password" formControlName="password"  class="form-control" placeholder="Enter Your Password">
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <input type="submit" value="Login" [disabled]="!formdata.valid" class="btn btn-dark">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-4"></div>
+
+  <!-- <div class="col-md-6">
+    <div id="map" class="colorlib-map"></div>
+  </div> -->
+</div>

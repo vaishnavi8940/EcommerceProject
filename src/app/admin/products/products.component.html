@@ -1,0 +1,90 @@
+<!-- <button (click)="logout()">Logout</button> -->
+<div id="page">
+
+
+
+  <div class="colorlib-product">
+    <div class="container">
+
+      <div class="row row-pb-lg">
+        <div class="col-md-12">
+          <div class="product-name d-flex">
+            <div class="one-forth text-left px-4">
+              <span>Product Detail</span>
+            </div>
+            <div class="one-eight text-center">
+              <span class="me-3">Description</span>
+            </div>
+            <div class="one-eight text-center">
+              <span >MRP</span>
+            </div>
+            <div class="one-eight text-center">
+              <span>Price</span>
+            </div>
+            <div class="one-eight text-center px-4">
+              <span>IsActive </span>
+            </div>
+            <div class="one-eight text-center px-4">
+              <span>Category </span>
+            </div>
+            <div class="one-eight text-center px-4">
+              <span>Actions </span>
+            </div>
+          </div>
+          <div class="product-cart d-flex" *ngFor="let product of result;">
+            <div class="one-forth">
+              <div class="product-img">
+                <img src="{{ product.avatar}}" style="height: 100px;" alt="">
+              </div>
+              <div class="display-tc">
+                <h3>{{product.name}}</h3>
+              </div>
+            </div>
+            <div class="one-eight text-center">
+              <div class="display-tc">
+                <span class="price me-5"> {{product.description}}</span>
+              </div>
+            </div>
+            <div class="one-eight text-center">
+              <div class="display-tc">
+                <span class="price me-5 ">{{product.mrp | currency:"INR"}}</span>
+              </div>
+            </div>
+            <div class="one-eight text-center">
+              <div class="display-tc">
+               <span class="me-5">{{product.price | currency:"INR"}}</span>
+                <!-- <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="1" min="1" max="100"> -->
+              </div>
+            </div>
+            <div class="one-eight text-center">
+              <div class="display-tc">
+                <span class="me-5">{{product.isactive}}</span>
+              </div>
+            </div>
+            <div class="one-eight text-center">
+              <div class="display-tc">
+                <span class="me-5">{{product.category}}</span>
+              </div>
+            </div>
+            <div class="one-eight text-center">
+              <div class="display-tc">
+                <button class="btn btn-primary btn-sm"  routerLink="/admin/product/{{product.id}}">Update</button>
+                <button class="btn btn-danger btn-sm" (click)="delete(product.id)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
+</div>
+<hr>
+
+
+
+

@@ -1,0 +1,81 @@
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="bread"><span><a routerLink="/products">Products</a></span> / <span>Product</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="colorlib-product">
+  <div class="container" *ngIf="show">
+    <div class="row row-pb-lg product-detail-wrap">
+      <div class="col-sm-8">
+            <div >
+              <a href="#" class="prod-img">
+                <img src="{{show.avatar}}" style="height:500px" class="img-fluid" alt="Free html5 bootstrap 4 template">
+              </a>
+            </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="product-desc">
+          <h1 class="text-">{{show.name}}</h1>
+          <p class="price">
+            <span>{{show.price | currency:"INR"}}</span>
+            <span class="rate">
+              <i class="icon-star-full"></i>
+              <i class="icon-star-full"></i>
+              <i class="icon-star-full"></i>
+              <i class="icon-star-full"></i>
+              <i class="icon-star-half"></i>
+              (74 Rating)
+            </span>
+          </p>
+          <h4>Description : {{show.description}}</h4>
+          <div class="size-wrap">
+                <div class="block-26 mb-4">
+              <h4>Width</h4>
+                   <ul>
+                      <li><a href="#">M</a></li>
+                      <li><a href="#">W</a></li>
+                   </ul>
+                </div>
+          </div>
+                 <div class="input-group mb-4">
+
+                  <span class="input-group-btn">
+                      <button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="" (click)="decrement()">
+                       <i class="icon-minus2"></i>
+                      </button>
+                    </span>
+
+                    <input type="number" id="quantity" name="quantity" [(ngModel)]="quantity" class="form-control input-number" readonly value="1" min="1" max="100">
+
+                   <span class="input-group-btn ml-1">
+                      <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="" (click)="increment()">
+                         <i class="icon-plus2"></i>
+                     </button>
+                   </span>
+
+                  </div>
+                <div class="row">
+                  <div class="col-sm-12 text-center" >
+              <p class="addtocart"><a  class="btn btn-primary btn-addtocart"
+                (click)="addTocart()"><i class="icon-shopping-cart"></i> Add to Cart</a></p>
+            </div>
+          </div>
+
+             <h5>MRP :- {{show.mrp}}</h5>
+             <h4>Category :- {{show.category}}</h4>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>	<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="ion-ios-arrow-up"></i></a>
+  </div>

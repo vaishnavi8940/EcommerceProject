@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="col-lg-12" style="margin-top: 96px;">
+    <h1>Product</h1>
+
+     <form [formGroup]="formdata" (ngSubmit)="save(formdata.value)" >
+          Name :
+          <span *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid" class="text-danger small">Please Enter Product Name</span>
+          <input type="text" formControlName="name" class="form-control">
+          Description :
+          <span *ngIf="formdata.controls.description.touched && formdata.controls.description.invalid" class="text-danger small">Please Enter Product Description</span>
+          <textarea type="textarea" formControlName="description" class="form-control"></textarea>
+    <div class="d-flex mt-4 mb-2">
+            MRP:
+            <span class="text-danger small" *ngIf="formdata.controls.mrp.touched && formdata.controls.price.value > formdata.controls.mrp.value;">Please make sure MRP is greater than price</span> <br>
+            <input type="number" formControlName="mrp" class="form-control w-50 me-4 ms-2">
+
+            Price:
+            <span *ngIf="formdata.controls.price.touched  && formdata.controls.price.value > formdata.controls.mrp.value" class="text-danger small">Price must be less than MRP</span>
+            <input type="number" formControlName="price" class="form-control w-50  ms-2" >
+    </div>
+           Image :
+           <span class="text-danger small" *ngIf="formdata.controls.img.touched && formdata.controls.img.invalid">Please Select Product Image</span>
+           <input type="text" formControlName="img" class="form-control">
+           IsActive :  &nbsp; <span class="text-dark">Availabel</span>&nbsp;
+           <input type="checkbox"  checked formControlName="isactive" class="form-check-inline mt-3" >
+          <br><br>
+
+           <label class="form-label">Category :</label>  &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+           <label class="form-check-label">
+           <input type="radio" formControlName="category"  name="category" value="men" class="form-check-inline form-check-input"> Men
+           </label> &nbsp; &nbsp; &nbsp; &nbsp;
+           <label class="form-check-label">
+           <input type="radio" formControlName="category"  name="category" value="women" class="form-check-inline form-check-input"> Women
+          </label>
+
+           <button type="submit" [disabled]="!formdata.valid || formdata.controls.price.value > formdata.controls.mrp.value" class="btn btn-primary w-100 mt-2">Save</button>
+     </form>
+  </div>
+</div>
+

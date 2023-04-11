@@ -1,0 +1,26 @@
+.sidebar{
+  background-color: #f0f0f0;
+  border: 1px solid rgb(174, 171, 171);
+  border-radius: 5px;
+}
+.sidebar .sidebarmenu{
+  color: black;
+  font-weight:lighter;
+  font-size: 17px;
+}
+.sidebar:first-child{
+    padding-top: 30px;
+}
+.sidebar .sidebarmenu:hover{
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgb(190, 188, 188);
+  padding-left: 10px;
+}
+.sidebar:hover{
+  border: 1.5px solid rgb(10, 10, 10);
+  box-shadow: inset 20px black;
+}
+
