@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,10 @@ export class ApiService {
    return this.http.put(this.baseurl + path ,data);
   }
 
+  private cartValue = new BehaviorSubject(0);
+  currentCartValue = this.cartValue.asObservable();
 
+  updateCartValue(count:number){
+    this.cartValue.next(count);
+  }
 }

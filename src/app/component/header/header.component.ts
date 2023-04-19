@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  count = 0;
+  counter = 0;
+  constructor(private api:ApiService) { }
 
 ngOnInit(): void {
+  this.api.currentCartValue.subscribe((count)=>{
+    this.counter = count;
+   })
+
   if(localStorage.getItem("products") != null)
   {
     let products = JSON.parse(localStorage.getItem("products") || '[]');
-    this.count = products.length;
+    this.api.updateCartValue(products.length);
   }
 }
-cart = 0;
 
 }

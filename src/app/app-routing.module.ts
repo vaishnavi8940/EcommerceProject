@@ -7,6 +7,8 @@ import { AboutComponent } from './component/about/about.component';
 import { ProductComponent } from './component/product/product.component';
 import { LoginComponent } from './component/login/login.component';
 import { CartComponent } from './component/cart/cart.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
   {path:"",component:HomeComponent, pathMatch:"full"},
@@ -18,7 +20,8 @@ const routes: Routes = [
   {path:"products/:category",component:ProductsComponent},
   {path:"login",component:LoginComponent},
   {path:"cart",component:CartComponent},
-  {path:"admin", loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)},
+  {path:"checkout",component:CheckoutComponent},
+  {path:"admin", canActivate:[AdminGuard], loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)},
   {path:"**",redirectTo:"/"}
 ];
 

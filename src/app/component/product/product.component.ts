@@ -11,10 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductComponent implements OnInit {
   id: any;
   show: any;
-
   detail = new Array();
   quantity = 1;
-
   constructor(private api: ApiService, private router: Router, private route: ActivatedRoute, private toastr: ToastrService) {
     this.id = this.route.snapshot.paramMap.get("id");
   }
@@ -28,16 +26,15 @@ export class ProductComponent implements OnInit {
     this.detail = JSON.parse(localStorage.getItem("products") || "[]");
   }
 
+
   increment() {
     this.quantity++;
   }
-
   decrement() {
     if (this.quantity > 1) {
       this.quantity--;
     }
   }
-
 
   addTocart() {
     let product = {
@@ -48,7 +45,6 @@ export class ProductComponent implements OnInit {
       quantity: this.quantity
     }
     let productAdded = false;
-
     if (localStorage.getItem("products") != null)
       this.detail = JSON.parse(localStorage.getItem("products") || "[]");
 
@@ -58,14 +54,22 @@ export class ProductComponent implements OnInit {
         break;
       }
     }
-
     if (!productAdded) {
       this.detail.push(product);
       localStorage.setItem("products", JSON.stringify(this.detail));
-      this.toastr.success("Product Added To Cart", "Success");
+      this.toastr.success("Product Added To Cart", "Success",{
+        positionClass:"toast-top-center",
+        progressBar:true,
+        timeOut:2000
+      });
+      this.api.updateCartValue(this.detail.length);
     }
     else{
-      this.toastr.error("Product Already Added To Cart", "Error");
+      this.toastr.error("Product Already Added To Cart", "Error",{
+        positionClass:"toast-top-center",
+        progressBar:true,
+        timeOut:2000
+      });
     }
   }
 }

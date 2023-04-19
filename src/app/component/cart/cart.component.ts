@@ -10,27 +10,22 @@ import Swal from 'sweetalert2';
 })
 export class CartComponent implements OnInit {
   products:any;
-  array = new Array();
   total = 0;
-
-
-
-  constructor() { }
-
-    ngOnInit(): void {
+     constructor(private api:ApiService){ }
+     ngOnInit(): void {
      this.products = JSON.parse(localStorage.getItem("products") || '[]');
      this.calculateTotal();
-    }
+     }
 
     calculateTotal(){
       this.total = 0;
       this.products.map((product:any)=>{
         this.total += product.quantity * product.price;
       });
-
-    }
+     }
 
     cancleCart(product:any){
+
       Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -41,19 +36,19 @@ export class CartComponent implements OnInit {
         confirmButtonText: 'Yes, delete it!'
       }).then((result:any) => {
         if (result.isConfirmed) {
-          this.products = this.products.filter((p:any)=>{
+            this.products = this.products.filter((p:any)=>{
             if(product.id != p.id){
               return p;
             }
           })
+
           localStorage.setItem("products", JSON.stringify(this.products));
+          this.api.updateCartValue(this.products.length);
           this.calculateTotal();
         }
       })
 
-
     }
-
 
  keypressed(event:any){
    if (event.keyCode == 45) {
@@ -63,10 +58,8 @@ export class CartComponent implements OnInit {
      return true;
    }
  }
-
  quantityChanged(){
   localStorage.setItem("products", JSON.stringify(this.products));
   this.calculateTotal();
  }
-
 }

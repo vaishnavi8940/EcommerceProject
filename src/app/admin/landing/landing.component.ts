@@ -7,15 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent {
-  constructor(private router:Router){
-    if(localStorage.getItem("usertype") == null){
-      this.router.navigate(["/login"]);
-    }
-  }
+  constructor(private router:Router){ }
 
   logout(){
     localStorage.clear();
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/home"]);
   }
 
 }

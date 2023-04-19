@@ -1,178 +1,135 @@
-<div class="colorlib-product">
+<div class="breadcrumbs">
   <div class="container">
-    <div class="row row-pb-lg">
-      <div class="col-sm-10 offset-md-1">
-        <div class="process-wrap">
-          <div class="process text-center active">
-            <p><span>01</span></p>
-            <h3>Shopping Cart</h3>
-          </div>
-          <div class="process text-center active">
-            <p><span>02</span></p>
-            <h3>Checkout</h3>
-          </div>
-          <div class="process text-center">
-            <p><span>03</span></p>
-            <h3>Order Complete</h3>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col">
+        <p class="bread"><span><a routerLink="/cart">cart</a></span> / <span>Checkout</span></p>
       </div>
     </div>
+  </div>
+</div>
+<div class="colorlib-product">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-8">
-        <form method="post" class="colorlib-form">
+     <h1 class="text-center text-bold mb-5" style="color: gray; font-weight: 500;">CHECK OUT</h1>
+      <div class="col-lg-6">
+
+        <form [formGroup]="formdata" class="colorlib-form">
           <h2>Billing Details</h2>
-                <div class="row">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="fname">Name</label> &nbsp;
+                <span *ngIf="formdata.controls.name.touched && formdata.controls.name.invalid" class="text-danger small">Please Enter Product Name</span>
+                <input type="text" id="fname" class="form-control" formControlName="name" placeholder="Enter Your Name">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="fname">Address</label> &nbsp;
+                <span *ngIf="formdata.controls.address.touched && formdata.controls.address.invalid" class="text-danger small">Please Enter Address</span>
+                        <input type="text" id="address" class="form-control" formControlName="address"  placeholder="Enter Your Address">
+                    </div>
+                 </div>
+
                  <div class="col-md-12">
-                    <div class="form-group">
-                      <label for="country">Select Country</label>
-                       <div class="form-field">
-                         <i class="icon icon-arrow-down3"></i>
-                          <select name="people" id="people" class="form-control">
-                            <option value="#">Select country</option>
-                            <option value="#">Alaska</option>
-                            <option value="#">China</option>
-                            <option value="#">Japan</option>
-                            <option value="#">Korea</option>
-                            <option value="#">Philippines</option>
-                          </select>
-                       </div>
+              <div class="form-group">
+                <label for="companyname">City</label> &nbsp;
+                <span *ngIf="formdata.controls.city.touched && formdata.controls.city.invalid" class="text-danger small">Please Enter Your City </span>
+                        <input type="text" id="towncity" formControlName="city"  class="form-control" placeholder="City">
                     </div>
                  </div>
 
             <div class="col-md-6">
+
               <div class="form-group">
-                <label for="fname">First Name</label>
-                <input type="text" id="fname" class="form-control" placeholder="Your firstname">
+                <label for="lname">Pin/Postal Code</label>
+                &nbsp;
+                <span *ngIf="formdata.controls.pincode.touched && formdata.controls.pincode.invalid" class="text-danger small">Enter pincode</span>
+                <input type="text" id="zippostalcode" class="form-control" formControlName="pincode"  placeholder="Pin / Postal">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" class="form-control" placeholder="Your lastname">
+                <label for="Phone">Phone Number</label>&nbsp;
+                <span *ngIf="formdata.controls.mobno.touched && formdata.controls.mobno.invalid" class="text-danger small">Enter Mobile No.</span>
+                <input type="text" id="zippostalcode" class="form-control" formControlName="mobno"  placeholder="Enter Mobile No.">
               </div>
             </div>
 
             <div class="col-md-12">
               <div class="form-group">
-                <label for="companyname">Company Name</label>
-                        <input type="text" id="companyname" class="form-control" placeholder="Company Name">
-                    </div>
-                 </div>
-
-                 <div class="col-md-12">
-              <div class="form-group">
-                <label for="fname">Address</label>
-                        <input type="text" id="address" class="form-control" placeholder="Enter Your Address">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="address2" class="form-control" placeholder="Second Address">
-                    </div>
-                 </div>
-
-                 <div class="col-md-12">
-              <div class="form-group">
-                <label for="companyname">Town/City</label>
-                        <input type="text" id="towncity" class="form-control" placeholder="Town or City">
-                    </div>
-                 </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="stateprovince">State/Province</label>
-                <input type="text" id="fname" class="form-control" placeholder="State Province">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="lname">Zip/Postal Code</label>
-                <input type="text" id="zippostalcode" class="form-control" placeholder="Zip / Postal">
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="email">E-mail Address</label>
-                <input type="text" id="email" class="form-control" placeholder="State Province">
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label for="Phone">Phone Number</label>
-                <input type="text" id="zippostalcode" class="form-control" placeholder="">
-              </div>
-            </div>
-
-            <div class="col-md-12">
-              <div class="form-group">
-                <div class="radio">
-                  <label><input type="radio" name="optradio"> Create an Account? </label>
-                  <label><input type="radio" name="optradio"> Ship to different address</label>
-                </div>
+                <label for="email">E-mail Address</label>&nbsp;
+                <span *ngIf="formdata.controls.email.touched && formdata.controls.email.invalid" class="text-danger small">Please Enter Email ID</span>
+                <input type="text" id="email" class="form-control" formControlName="email"  placeholder="State Province">
               </div>
             </div>
                </div>
-            </form>
+        </form>
+
+
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-6">
         <div class="row">
           <div class="col-md-12">
             <div class="cart-detail">
               <h2>Cart Total</h2>
+              <div class="row row-pb-lg">
+                <div class="col-md-12">
+                  <div class="product-name d-flex">
+                    <div class="one-forth text-left px-4 ">
+                      <span>Product</span>
+                    </div>
+                    <div class="one-eight text-center">
+                      <span>Price</span>
+                    </div>
+                    <div class="one-eight text-center">
+                      <span>Quantity</span>
+                    </div>
+                    <div class="one-eight text-center">
+                      <span>Total</span>
+                    </div>
+                  </div>
+                  <div class="product-cart d-flex" *ngFor="let product of products; let i = index">
+                    <div class="one-forth">
+                      <div class="product">
+                      </div>
+                      <div class="display-tc">
+                        <h3>{{product.name}}</h3>
+                      </div>
+                    </div>
+                    <div class="one-eight text-center">
+                      <div class="display-tc">
+                       &nbsp; &nbsp; <span class="price ms-5 about-wrap">{{product.price | currency:"INR"}}</span>
+                      </div>
+                    </div>
+                    <div class="one-eight text-center">
+                      <div class="display-tc" >
+                        <span class="price ms-3 about-wrap"> {{product.quantity}} </span>
+                      </div>
+                    </div>
+                    <div class="one-eight text-center">
+                      <div class="display-tc">
+                        <span class="price">{{(product.quantity * product.price) | currency:"INR"}}</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
               <ul>
-                <li>
-                  <span>Subtotal</span> <span>$100.00</span>
-                  <ul>
-                    <li><span>1 x Product Name</span> <span>$99.00</span></li>
-                    <li><span>1 x Product Name</span> <span>$78.00</span></li>
-                  </ul>
-                </li>
-                <li><span>Shipping</span> <span>$0.00</span></li>
-                <li><span>Order Total</span> <span>$180.00</span></li>
+                <li><span style="font-weight: bolder;">Order Total</span> <span>{{ total }}</span></li>
               </ul>
             </div>
            </div>
 
            <div class="w-100"></div>
 
-           <div class="col-md-12">
-            <div class="cart-detail">
-              <h2>Payment Method</h2>
-              <div class="form-group">
-                <div class="col-md-12">
-                  <div class="radio">
-                     <label><input type="radio" name="optradio"> Direct Bank Tranfer</label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-md-12">
-                  <div class="radio">
-                     <label><input type="radio" name="optradio"> Check Payment</label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-md-12">
-                  <div class="radio">
-                     <label><input type="radio" name="optradio"> Paypal</label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-md-12">
-                  <div class="checkbox">
-                     <label><input type="checkbox" value=""> I have read and accept the terms and conditions</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
-            <p><a href="#" class="btn btn-primary">Place an order</a></p>
+            <p><a  class="btn btn-dark text-white" (click)="placeOrder()">Place an order</a></p>
           </div>
         </div>
       </div>	<div class="gototop js-top">

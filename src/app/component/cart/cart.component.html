@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <p class="bread"><span><a href="index.html">Home</a></span> / <span>Shopping Cart</span></p>
+        <p class="bread"><span><a routerLink="/">Home</a></span> / <span>Shopping Cart</span></p>
       </div>
     </div>
   </div>
@@ -14,16 +14,16 @@
     <div class="row row-pb-lg">
       <div class="col-md-12">
         <div class="product-name d-flex">
-          <div class="one-forth text-left px-4">
+          <div class="one-forth text-left px-4 ms-5">
             <span>Product</span>
           </div>
-          <div class="one-eight text-center">
+          <div class="one-eight text-center me-3">
             <span>Price</span>
           </div>
-          <div class="one-eight text-center">
+          <div class="one-eight text-center me-4">
             <span>Quantity</span>
           </div>
-          <div class="one-eight text-center">
+          <div class="one-eight text-center  me-2">
             <span>Total</span>
           </div>
           <div class="one-eight text-center px-4">
@@ -32,11 +32,11 @@
         </div>
         <div class="product-cart d-flex" *ngFor="let product of products; let i = index">
           <div class="one-forth">
-            <div class="product-img" style="background-image: url(images/item-6.jpg);">
+            <div class="product">
             </div>
             <div class="display-tc">
               <img src="" alt="">
-              <h3>{{product.name}}</h3>
+              <h3 class="ms-5">{{product.name}}</h3>
             </div>
           </div>
           <div class="one-eight text-center">
@@ -46,7 +46,8 @@
           </div>
           <div class="one-eight text-center">
             <div class="display-tc">
-              <input type="number" min="1" class="form-control text-center" (keypress)="keypressed($event)" max="100" value="{{ product.quantity }}" [(ngModel)]="product.quantity" (change)="quantityChanged()" />
+              <input type="number" min="1" class="form-control text-center" (keypress)="keypressed($event)" max="100" value="{{ product.quantity }}" [(ngModel)]="product.quantity"
+              (change)="quantityChanged()" />
             </div>
           </div>
           <div class="one-eight text-center">
@@ -66,8 +67,11 @@
       <div class="col-md-12">
         <div class="total-wrap">
           <div class="row">
-            <div class="col-sm-8"></div>
-            <div class="col-sm-4 text-center" *ngIf="products" >
+            <div class="col-sm-4">
+              <p class="addtocart" id="Checkout"><a routerLink="/checkout" class="btn btn-lg btn-dark text-white"><i class="icon-shopping-cart"></i>Checkout</a></p>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 text-center">
               <div class="total">
                 <div class="grand-total">
                   <p><span><strong>Total:</strong></span> <span>{{ total | currency:"INR" }}</span></p>
@@ -81,61 +85,22 @@
 
     <div class="row">
       <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
-        <h2>Related Products</h2>
+
+        <a routerLink="/products" ><h2>CUSTOMERS ALSO LIKED</h2></a>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3 col-lg-3 mb-4 text-center">
-        <div class="product-entry border">
-          <a href="#" class="prod-img">
-            <img src="images/item-1.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-          </a>
-          <div class="desc">
-            <h2><a href="#">Women's Boots Shoes Maca</a></h2>
-            <span class="price">$139.00</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-lg-3 mb-4 text-center">
-        <div class="product-entry border">
-          <a href="#" class="prod-img">
-            <img src="images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-          </a>
-          <div class="desc">
-            <h2><a href="#">Women's Minam Meaghan</a></h2>
-            <span class="price">$139.00</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-lg-3 mb-4 text-center">
-        <div class="product-entry border">
-          <a href="#" class="prod-img">
-            <img src="images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-          </a>
-          <div class="desc">
-            <h2><a href="#">Men's Taja Commissioner</a></h2>
-            <span class="price">$139.00</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 col-lg-3 mb-4 text-center">
-        <div class="product-entry border">
-          <a href="#" class="prod-img">
-            <img src="images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
-          </a>
-          <div class="desc">
-            <h2><a href="#">Russ Men's Sneakers</a></h2>
-            <span class="price">$139.00</span>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
   <div *ngIf="total == 0" class="container">
-    <div class="row">
+    <div class="row" id="emptyCartBackgroun" >
+      <div class="col-lg-3"></div>
+      <div class="col-lg-5">
+        <a routerLink="/products" id="gotoproduct">Keep Shopping <span><img src="assets/images/emptycart.gif"  width="60px" height="40px" alt="cart"></span> </a> <br><br>
+        <img src="assets/images/emptyPage.jpg" alt="mt">
+      </div>
+      <div class="col-lg-4"></div>
       <div class="col-lg-12 text-center">
-        <h1>Cart is Empty</h1>
-        <a routerLink="/products">Keep Shopping</a>
+        <h1 class="ms-5">Cart is Empty</h1>
       </div>
     </div>
   </div>
